@@ -15,3 +15,6 @@ RUN echo ${TZ} > /etc/timezone
 RUN if ! [ /usr/share/zoneinfo/${TZ} -ef /etc/localtime ]; then \
         cp /usr/share/zoneinfo/${TZ} /etc/localtime ;\
     fi ;
+
+# Install arttheme
+RUN  pip3 install -e git+https://github.com/nzfarhad/ckanext-atrtheme.git#egg=ckanext-atrtheme
