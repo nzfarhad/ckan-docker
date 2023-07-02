@@ -18,3 +18,14 @@ RUN if ! [ /usr/share/zoneinfo/${TZ} -ef /etc/localtime ]; then \
 
 # Install arttheme
 RUN  pip3 install -e git+https://github.com/nzfarhad/ckanext-atrtheme.git#egg=ckanext-atrtheme
+
+### XLoader ###
+RUN pip3 install -e 'git+https://github.com/ckan/ckanext-xloader.git@master#egg=ckanext-xloader' && \ 
+    pip3 install -r ${APP_DIR}/src/ckanext-xloader/requirements.txt && \
+    pip3 install -U requests[security]
+
+
+### Pages ###
+RUN  pip3 install -e git+https://github.com/ckan/ckanext-pages.git#egg=ckanext-pages
+
+#RUN python3 ckan -c /srv/app/ckan.ini jobs worker
